@@ -104,6 +104,8 @@ const jsonLd = {
   logo: `${siteUrl}/images/logo.png`,
   image: `${siteUrl}/images/hero-parts.jpg`,
   email: "info@ahi-tec.de",
+  priceRange: "€€",
+  currenciesAccepted: "EUR",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Meinerzhagen",
