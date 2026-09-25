@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function ImpressumPage() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Header solid />
+      <Header />
       <main className="flex-grow mx-auto max-w-3xl px-4 pb-24 pt-32 sm:px-6 w-full">
         <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Impressum</h1>
 

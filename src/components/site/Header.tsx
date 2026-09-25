@@ -34,7 +34,7 @@ export function Logo({
   );
 }
 
-export function Header({ solid = false }: { solid?: boolean } = {}) {
+export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
