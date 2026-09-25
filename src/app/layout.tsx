@@ -91,6 +91,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    apple: "/images/logo.png",
   },
 };
 
@@ -101,7 +102,7 @@ const jsonLd = {
   description:
     "Industriedienstleistungen aus Meinerzhagen – Montage, Prüfung, Sortierung, Entgraten und CNC-Bearbeitung von Metall-, Kunststoff- und Elektroteilen.",
   url: siteUrl,
-  logo: `${siteUrl}/favicon.ico`,
+  logo: `${siteUrl}/images/logo.png`,
   image: `${siteUrl}/images/hero-parts.jpg`,
   email: "info@ahi-tec.de",
   address: {

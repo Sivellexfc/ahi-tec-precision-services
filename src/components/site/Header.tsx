@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -12,15 +13,19 @@ const NAV = [
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
-    <Link href="/" className="flex items-center gap-2" aria-label="AHI-TEC Startseite">
-      <span className="flex h-9 w-9 items-center justify-center rounded-md bg-signal font-black text-accent-foreground">
-        A
-      </span>
-      <span
-        className={`text-xl font-black tracking-tight ${dark ? "text-primary-foreground" : "text-primary"}`}
-      >
-        AHI<span className="text-signal">-</span>TEC
-      </span>
+    <Link
+      href="/"
+      className="flex items-center gap-2 group transition-opacity hover:opacity-95"
+      aria-label="AHI-TEC Startseite"
+    >
+      <Image
+        src={dark ? "/images/logo-white.png" : "/images/logo.png"}
+        alt="AHI-TEC Industriedienstleistungen"
+        width={200}
+        height={69}
+        priority
+        className="h-10 w-auto object-contain"
+      />
     </Link>
   );
 }
@@ -35,16 +40,46 @@ export function Header({ solid = false }: { solid?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isDark = !scrolled && !solid;
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors ${
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
         scrolled || solid
           ? "border-b border-border bg-background/95 backdrop-blur"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Logo dark={!scrolled && !solid} />
+        <div className="relative h-10 w-[150px] sm:w-[170px] flex items-center">
+          <Link
+            href="/"
+            aria-label="AHI-TEC Startseite"
+            className="flex items-center h-full w-full"
+          >
+            <Image
+              src="/images/logo-white.png"
+              alt="AHI-TEC Industriedienstleistungen"
+              width={200}
+              height={69}
+              priority
+              className={`absolute inset-0 h-10 w-auto object-contain transition-opacity duration-200 ${
+                isDark ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            />
+            <Image
+              src="/images/logo.png"
+              alt="AHI-TEC Industriedienstleistungen"
+              width={200}
+              height={69}
+              priority
+              className={`absolute inset-0 h-10 w-auto object-contain transition-opacity duration-200 ${
+                isDark ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+            />
+          </Link>
+        </div>
+
         <nav className="hidden items-center gap-7 md:flex" aria-label="Hauptnavigation">
           {NAV.map((item) => (
             <Link
