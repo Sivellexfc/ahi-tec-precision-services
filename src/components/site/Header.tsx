@@ -11,7 +11,11 @@ const NAV = [
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
-export function Logo() {
+export function Logo({
+  className = "h-12 sm:h-14 w-auto object-contain",
+}: {
+  className?: string;
+} = {}) {
   return (
     <Link
       href="/"
@@ -21,10 +25,10 @@ export function Logo() {
       <Image
         src="/images/logo.png"
         alt="AHI-TEC Industriedienstleistungen"
-        width={200}
-        height={69}
+        width={300}
+        height={104}
         priority
-        className="h-10 w-auto object-contain"
+        className={className}
       />
     </Link>
   );
@@ -46,7 +50,7 @@ export function Header({ solid = false }: { solid?: boolean } = {}) {
         scrolled ? "shadow-md" : "shadow-xs"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Logo />
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Hauptnavigation">
