@@ -11,20 +11,22 @@ const NAV = [
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
-export function Logo({ dark = false }: { dark?: boolean }) {
+export function Logo({ onDark = false }: { onDark?: boolean }) {
   return (
     <Link
       href="/"
-      className="flex items-center gap-2 group transition-opacity hover:opacity-95"
+      className={`inline-flex items-center transition-all ${
+        onDark ? "rounded-md bg-white px-2.5 py-1 shadow-sm" : ""
+      }`}
       aria-label="AHI-TEC Startseite"
     >
       <Image
-        src={dark ? "/images/logo-white.png" : "/images/logo.png"}
+        src="/images/logo.png"
         alt="AHI-TEC Industriedienstleistungen"
         width={200}
         height={69}
         priority
-        className="h-10 w-auto object-contain"
+        className="h-9 w-auto object-contain"
       />
     </Link>
   );
@@ -46,39 +48,12 @@ export function Header({ solid = false }: { solid?: boolean }) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
         scrolled || solid
-          ? "border-b border-border bg-background/95 backdrop-blur"
+          ? "border-b border-border bg-background/95 backdrop-blur shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <div className="relative h-10 w-[150px] sm:w-[170px] flex items-center">
-          <Link
-            href="/"
-            aria-label="AHI-TEC Startseite"
-            className="flex items-center h-full w-full"
-          >
-            <Image
-              src="/images/logo-white.png"
-              alt="AHI-TEC Industriedienstleistungen"
-              width={200}
-              height={69}
-              priority
-              className={`absolute inset-0 h-10 w-auto object-contain transition-opacity duration-200 ${
-                isDark ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-            />
-            <Image
-              src="/images/logo.png"
-              alt="AHI-TEC Industriedienstleistungen"
-              width={200}
-              height={69}
-              priority
-              className={`absolute inset-0 h-10 w-auto object-contain transition-opacity duration-200 ${
-                isDark ? "opacity-0 pointer-events-none" : "opacity-100"
-              }`}
-            />
-          </Link>
-        </div>
+        <Logo onDark={isDark} />
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Hauptnavigation">
           {NAV.map((item) => (
@@ -118,7 +93,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div>
-            <Logo dark />
+            <Logo onDark />
             <p className="mt-3 max-w-sm text-sm text-primary-foreground/70">
               Industriedienstleistungen aus Meinerzhagen – Montage, Prüfung,
               Sortierung, Entgraten und CNC-Bearbeitung.
