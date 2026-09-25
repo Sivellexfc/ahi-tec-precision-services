@@ -11,13 +11,11 @@ const NAV = [
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
-export function Logo({ onDark = false }: { onDark?: boolean }) {
+export function Logo() {
   return (
     <Link
       href="/"
-      className={`inline-flex items-center transition-all ${
-        onDark ? "rounded-md bg-white px-2.5 py-1 shadow-sm" : ""
-      }`}
+      className="inline-flex items-center"
       aria-label="AHI-TEC Startseite"
     >
       <Image
@@ -26,7 +24,7 @@ export function Logo({ onDark = false }: { onDark?: boolean }) {
         width={200}
         height={69}
         priority
-        className="h-9 w-auto object-contain"
+        className="h-10 w-auto object-contain"
       />
     </Link>
   );
@@ -42,8 +40,6 @@ export function Header({ solid = false }: { solid?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isDark = !scrolled && !solid;
-
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
@@ -53,7 +49,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Logo onDark={isDark} />
+        <Logo />
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Hauptnavigation">
           {NAV.map((item) => (
@@ -93,7 +89,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div>
-            <Logo onDark />
+            <Logo />
             <p className="mt-3 max-w-sm text-sm text-primary-foreground/70">
               Industriedienstleistungen aus Meinerzhagen – Montage, Prüfung,
               Sortierung, Entgraten und CNC-Bearbeitung.
