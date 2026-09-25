@@ -4,7 +4,7 @@ import { Header, Footer } from "@/components/site/Header";
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Header solid />
+      <Header />
       <main className="flex-grow flex items-center justify-center px-4 py-24">
         <div className="max-w-md text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-signal">
